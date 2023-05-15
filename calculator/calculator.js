@@ -15,6 +15,7 @@ buttons.forEach(button => {
     })
 });
 
+
 // Write function to perform operation based on button clicked
 function calculate(operation){
     const num1 = parseInt(input1.value),
@@ -38,7 +39,7 @@ function calculate(operation){
 
 
 function activateBtns(element, other){
-    element.addEventListener("keydown", function() {
+    element.addEventListener("keyup", function() {
         if(parseInt(element.value) && parseInt(other.value)){
             buttons.forEach(button => {
                 button.disabled = false;
