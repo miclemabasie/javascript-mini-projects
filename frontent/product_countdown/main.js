@@ -4,33 +4,35 @@ const page2 = document.getElementById("page2")
 setBtn.disabled = true
 const input = document.getElementById("time")
 
-if(localStorage.getItem("counter")){
+page2.style.display = 'none';
+
+if (localStorage.getItem("counter")) {
     document.getElementById("page1").style.display = 'none'
     inputContent = localStorage.getItem("counter")
     runtimer(inputContent)
 }
 
 // handle input validation
-input.addEventListener("keyup", function() {
+input.addEventListener("keyup", function () {
     let inputContent = parseInt(input.value)
     setBtn.disabled = true
-    if(typeof(inputContent) === "number" && inputContent > 0){
-        if(input.value.length > 0) {
+    if (typeof (inputContent) === "number" && inputContent > 0) {
+        if (input.value.length > 0) {
             setBtn.disabled = false
             console.log(inputContent)
-        }else {
+        } else {
             setBtn.disabled = false;
         }
     }
 })
 
-setBtn.onclick = function() {
+setBtn.onclick = function () {
     let inputContent = parseInt(input.value)
     document.getElementById("page1").style.display = 'none'
     page2.style.display = 'flex';
 
     runtimer(inputContent)
-    
+
 }
 function formatTime(inputContent) {
     // calculate the hours in anygiven input
@@ -44,12 +46,12 @@ function formatTime(inputContent) {
 
     let content = `<h1>Time Left: ${hours}h : ${min}m : ${seconds}s</h1>`
     page2.innerHTML = content;
-    
+
 }
 
-function runtimer(inputContent){
+function runtimer(inputContent) {
     setInterval(() => {
-        if(inputContent === 0){
+        if (inputContent === 0) {
             localStorage.removeItem("counter")
             return false;
         }
